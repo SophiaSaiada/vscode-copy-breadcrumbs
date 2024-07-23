@@ -9,7 +9,7 @@ import { commands, env, window, workspace } from "vscode";
 
 export function activate(context: ExtensionContext) {
   context.subscriptions.push(
-    commands.registerCommand("cunneen-copy-breadcrumbs.copy", command)
+    commands.registerCommand("dev.sophies.copy-breadcrumbs.copy", command)
   );
 }
 
