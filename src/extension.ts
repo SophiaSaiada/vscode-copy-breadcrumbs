@@ -15,7 +15,7 @@ export function activate(context: ExtensionContext) {
 
 export function deactivate() {}
 
-function command() {
+async function command() {
   const activeTextEditor = window.activeTextEditor;
   if (!activeTextEditor) {
     return;
@@ -26,7 +26,7 @@ function command() {
   const relativePath = workspace.asRelativePath(documentPath.path);
   const pathWithLine = `${relativePath}:${activeSelection.line + 1}`;
 
-  const breadcrumbs = getBreadcrumbs(documentPath, activeSelection);
+  const breadcrumbs = await getBreadcrumbs(documentPath, activeSelection);
 
   const textToCopy = pathWithLine + (breadcrumbs ? ` (${breadcrumbs})` : "");
   env.clipboard.writeText(textToCopy);
